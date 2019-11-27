@@ -37,7 +37,7 @@
                        
                        <div class='item active'>
                        
-                       <img src='admin_area/slides_images/$slide_image'>
+                       <img src='admin/slides_images/$slide_image'>
                        
                        </div>
                        

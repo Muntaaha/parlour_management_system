@@ -111,7 +111,24 @@
                 </ul><!-- collapse finish -->
                 
             </li><!-- li finish -->
-            
+            <li><!-- li begin -->
+                <a href="#" data-toggle="collapse" data-target="#branch"><!-- a href begin -->
+                        
+                        <i class="fa fa-fw fa-edit"></i> Branch 
+                        <i class="fa fa-fw fa-caret-down"></i>
+                        
+                </a><!-- a href finish -->
+                
+                <ul id="branch" class="collapse"><!-- collapse begin -->
+                    <li><!-- li begin -->
+                        <a href="index.php?insert_branch"> Insert Branch </a>
+                    </li><!-- li finish -->
+                    <li><!-- li begin -->
+                        <a href="index.php?view_branch"> View Branch </a>
+                    </li><!-- li finish -->
+                </ul><!-- collapse finish -->
+                
+            </li><!-- li finish -->
             <li><!-- li begin -->
                 <a href="#" data-toggle="collapse" data-target="#p_cat"><!-- a href begin -->
                         

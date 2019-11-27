@@ -1,6 +1,6 @@
 <?php 
 
-session_start();
+//session_start();
 
 include("includes/db.php");
 include("functions/functions.php");
@@ -163,10 +163,10 @@ if(isset($_GET['pro_id'])){
                    <ul class="nav navbar-nav left"><!-- nav navbar-nav left Begin -->
                        
                        <li class="<?php if($active=='Home') echo"active"; ?>">
-                           <a href="index.php">Home</a>
+                           <a href="../index.php">Home</a>
                        </li>
                        <li class="<?php if($active=='Services') echo"active"; ?>">
-                           <a href="service.php">Services</a>
+                           <a href="../service.php">Services</a>
                        </li>
                        <li class="<?php if($active=='Account') echo"active"; ?>">
                            
@@ -174,7 +174,7 @@ if(isset($_GET['pro_id'])){
                            
                            if(!isset($_SESSION['customer_email'])){
                                
-                               echo"<a href='checkout.php'>My Account</a>";
+                               echo"<a href='../checkout.php'>My Account</a>";
                                
                            }else{
                                
@@ -186,10 +186,10 @@ if(isset($_GET['pro_id'])){
                            
                        </li>
                        <li class="<?php if($active=='Appointment') echo"active"; ?>">
-                           <a href="appointment.php">Appointment</a>
+                           <a href="../appointment.php">Appointment</a>
                        </li>
                        <li class="<?php if($active=='Product') echo"active"; ?>">
-                           <a href="shop.php">Products</a>
+                           <a href="../shop.php">Products</a>
                        </li>
                        
                    </ul><!-- nav navbar-nav left Finish -->

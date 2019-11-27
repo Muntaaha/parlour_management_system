@@ -86,6 +86,10 @@
                         
                         include("edit_product.php");
                         
+                }	if(isset($_GET['delete_product'])){
+                        
+                        include("delete_product.php");
+                        
                 }	if(isset($_GET['insert_service_categories'])){
                         
                         include("insert_services_category.php");
@@ -101,6 +105,22 @@
                 }	if(isset($_GET['view_services'])){
                         
                         include("view_services.php");
+                        
+                }    if(isset($_GET['insert_branch'])){
+                        
+                        include("insert_branch.php");
+                        
+                }   if(isset($_GET['view_branch'])){
+                        
+                        include("view_branch.php");
+                        
+                }   if(isset($_GET['delete_branch'])){
+                        
+                        include("delete_branch.php");
+                        
+                }   if(isset($_GET['edit_branch'])){
+                        
+                        include("edit_branch.php");
                         
                 }
         

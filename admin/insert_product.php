@@ -107,13 +107,13 @@
                               
                               <?php 
                               
-                              $get_cat = "select * from categories";
+                              $get_cat = "select * from service_categories";
                               $run_cat = mysqli_query($con,$get_cat);
                               
                               while ($row_cat=mysqli_fetch_array($run_cat)){
                                   
-                                  $cat_id = $row_cat['cat_id'];
-                                  $cat_title = $row_cat['cat_title'];
+                                  $cat_id = $row_cat['service_cat_id'];
+                                  $cat_title = $row_cat['service_cat_name'];
                                   
                                   echo "
                                   
