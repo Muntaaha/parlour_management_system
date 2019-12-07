@@ -5,7 +5,7 @@
         <ol class="breadcrumb"><!-- breadcrumb begin -->
             <li>
                 
-                <i class="fa fa-dashboard"></i> Dashboard / View Branch
+                <i class="fa fa-dashboard"></i> Dashboard / View Packages
                 
             </li>
         </ol><!-- breadcrumb finish -->
@@ -18,7 +18,7 @@
             <div class="panel-heading"><!-- panel-heading begin -->
                 <h3 class="panel-title"><!-- panel-title begin -->
                 
-                    <i class="fa fa-tags fa-fw"></i> View Branch
+                    <i class="fa fa-tags fa-fw"></i> View Packages
                 
                 </h3><!-- panel-title finish -->
             </div><!-- panel-heading finish -->
@@ -29,11 +29,9 @@
                         
                         <thead><!-- thead begin -->
                             <tr><!-- tr begin -->
-                                <th> Branch ID </th>
-                                <th> Branch Name </th>
-                                <th> Branch Address </th>
-                                <th> Edit Branch </th>
-                                <th> Delete Branch </th>
+                                <th> Packages ID </th>
+                                <th> Packages Name </th>
+                                <th> Packages Info </th>
                             </tr><!-- tr finish -->
                         </thead><!-- thead finish -->
                         
@@ -43,36 +41,28 @@
                             
                                 $i=0;
           
-                                $get_branch = "select * from branch";
+                                $get_packages = "select * from packages";
           
-                                $run_branch = mysqli_query($con,$get_branch);
+                                $run_packages = mysqli_query($con,$get_packages);
           
-                                while($row_branch=mysqli_fetch_array($run_branch)){
+                                while($row_packages=mysqli_fetch_array($run_packages)){
                                     
-                                    $branch_id = $row_branch['branch_id'];
+                                    $packages_id = $row_packages['packages_id'];
                                     
-                                    $branch_name = $row_branch['branch_name'];
+                                    $packages_title = $row_packages['packages_name'];
                                     
-                                    $branch_address = $row_branch['branch_address'];
-									                                    
+                                    $packages_desc = $row_packages['packages_info'];
+									
+                                    $packages_status = $row_packages['status'];
+                                    
                                     $i++;
                             
                             ?>
                             
                             <tr><!-- tr begin -->
                                 <td> <?php echo $i; ?> </td>
-                                <td> <?php echo $branch_name; ?> </td>
-                                <td width="300"> <?php echo $branch_address; ?> </td>
-								<td> 
-                                    <a href="index.php?edit_branch= <?php echo $branch_id; ?> ">
-                                        <i class="fa fa-pencil"></i> Edit
-                                    </a>
-                                </td>
-                                <td> 
-                                    <a href="index.php?delete_branch= <?php echo $branch_id; ?> ">
-                                        <i class="fa fa-trash"></i> Delete
-                                    </a>
-                                </td>
+                                <td> <?php echo $packages_title; ?> </td>
+                                <td width="300"> <?php echo $packages_desc; ?> </td>
                             </tr><!-- tr finish -->
                             
                             <?php } ?>

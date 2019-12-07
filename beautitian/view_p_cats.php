@@ -5,7 +5,7 @@
         <ol class="breadcrumb"><!-- breadcrumb begin -->
             <li>
                 
-                <i class="fa fa-dashboard"></i> Dashboard / View Branch
+                <i class="fa fa-dashboard"></i> Dashboard / View Product Categories
                 
             </li>
         </ol><!-- breadcrumb finish -->
@@ -18,7 +18,7 @@
             <div class="panel-heading"><!-- panel-heading begin -->
                 <h3 class="panel-title"><!-- panel-title begin -->
                 
-                    <i class="fa fa-tags fa-fw"></i> View Branch
+                    <i class="fa fa-tags fa-fw"></i> View Product Categories
                 
                 </h3><!-- panel-title finish -->
             </div><!-- panel-heading finish -->
@@ -29,11 +29,9 @@
                         
                         <thead><!-- thead begin -->
                             <tr><!-- tr begin -->
-                                <th> Branch ID </th>
-                                <th> Branch Name </th>
-                                <th> Branch Address </th>
-                                <th> Edit Branch </th>
-                                <th> Delete Branch </th>
+                                <th> Product Category ID </th>
+                                <th> Product Category Title </th>
+                                <th> Product Category Desc </th>
                             </tr><!-- tr finish -->
                         </thead><!-- thead finish -->
                         
@@ -43,36 +41,26 @@
                             
                                 $i=0;
           
-                                $get_branch = "select * from branch";
+                                $get_p_cats = "select * from product_categories";
           
-                                $run_branch = mysqli_query($con,$get_branch);
+                                $run_p_cats = mysqli_query($con,$get_p_cats);
           
-                                while($row_branch=mysqli_fetch_array($run_branch)){
+                                while($row_p_cats=mysqli_fetch_array($run_p_cats)){
                                     
-                                    $branch_id = $row_branch['branch_id'];
+                                    $p_cat_id = $row_p_cats['p_cat_id'];
                                     
-                                    $branch_name = $row_branch['branch_name'];
+                                    $p_cat_title = $row_p_cats['p_cat_title'];
                                     
-                                    $branch_address = $row_branch['branch_address'];
-									                                    
+                                    $p_cat_desc = $row_p_cats['p_cat_desc'];
+                                    
                                     $i++;
                             
                             ?>
                             
                             <tr><!-- tr begin -->
                                 <td> <?php echo $i; ?> </td>
-                                <td> <?php echo $branch_name; ?> </td>
-                                <td width="300"> <?php echo $branch_address; ?> </td>
-								<td> 
-                                    <a href="index.php?edit_branch= <?php echo $branch_id; ?> ">
-                                        <i class="fa fa-pencil"></i> Edit
-                                    </a>
-                                </td>
-                                <td> 
-                                    <a href="index.php?delete_branch= <?php echo $branch_id; ?> ">
-                                        <i class="fa fa-trash"></i> Delete
-                                    </a>
-                                </td>
+                                <td> <?php echo $p_cat_title; ?> </td>
+                                <td width="300"> <?php echo $p_cat_desc; ?> </td>
                             </tr><!-- tr finish -->
                             
                             <?php } ?>

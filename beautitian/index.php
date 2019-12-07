@@ -14,11 +14,27 @@
                 
                 <?php
                 
-                    //if(isset($_GET['insert_beautitian'])){
+                    if(isset($_GET['view_products'])){
                         
-                        //include("insert_beautitian.php");
+                        include("view_products.php");
                         
-                //}   
+                }	if(isset($_GET['view_service_categories'])){
+                        
+                        include("view_service_categories.php");
+                        
+                }	if(isset($_GET['view_services'])){
+                        
+                        include("view_services.php");
+                        
+                }	if(isset($_GET['view_packages'])){
+                        
+                        include("view_packages.php");
+                        
+                }	if(isset($_GET['view_p_cats'])){
+                        
+                        include("view_p_cats.php");
+                        
+                }   
         
                 ?>
                 

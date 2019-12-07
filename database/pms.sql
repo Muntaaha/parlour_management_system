@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2019 at 05:30 PM
+-- Generation Time: Dec 07, 2019 at 03:43 PM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.1.29
 
@@ -71,6 +71,25 @@ CREATE TABLE `beautitian` (
 
 INSERT INTO `beautitian` (`beautitian_id`, `beautitian_name`, `beautitian_image`, `beautitian_pass`, `beautitian_email`, `beautitian_contact`, `beautitian_address`, `beautitian_age`, `beautitian_experience`, `beautitian_branch`) VALUES
 (1, 'Muntaaha Rahman', '71697309_2444518815874410_352312207331033088_n.jpg', '123456', 'muntaaha_rahman@gmail.com', '+8801849112288', 'HS#12 RD # 13 SEC # 7 ', 23, 1, 'Uttara');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `branch`
+--
+
+CREATE TABLE `branch` (
+  `branch_id` int(11) NOT NULL,
+  `branch_name` varchar(200) NOT NULL,
+  `branch_address` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `branch`
+--
+
+INSERT INTO `branch` (`branch_id`, `branch_name`, `branch_address`) VALUES
+(1, 'Uttara', 'SEC#7; ROAD#13; HOUSE#12 Second Floor, Flat 2-B');
 
 -- --------------------------------------------------------
 
@@ -158,7 +177,10 @@ INSERT INTO `customer_orders` (`order_id`, `customer_id`, `due_amount`, `invoice
 (11, 6, 300, 206863956, 1, 'Small', '2019-02-06', 'Complete'),
 (12, 6, 10, 206863956, 1, 'Small', '2019-02-06', 'Complete'),
 (13, 7, 50, 457189103, 1, '', '2019-11-07', 'pending'),
-(14, 7, 20, 457189103, 2, '', '2019-11-07', 'pending');
+(14, 7, 20, 457189103, 2, '', '2019-11-07', 'pending'),
+(15, 8, 400, 778908630, 1, '', '2019-12-05', 'pending'),
+(16, 7, 400, 182000583, 1, '', '2019-12-07', 'pending'),
+(17, 7, 1200, 351501767, 3, 'Large', '2019-12-07', 'pending');
 
 -- --------------------------------------------------------
 
@@ -230,7 +252,10 @@ INSERT INTO `pending_orders` (`order_id`, `customer_id`, `invoice_no`, `product_
 (11, 7, 457189103, '11', 1, '', 'pending'),
 (12, 7, 457189103, '15', 2, '', 'pending'),
 (13, 8, 1950293947, '15', 1, '', 'pending'),
-(14, 8, 1588117614, '15', 1, '', 'pending');
+(14, 8, 1588117614, '15', 1, '', 'pending'),
+(15, 8, 778908630, '16', 1, '', 'pending'),
+(16, 7, 182000583, '16', 1, '', 'pending'),
+(17, 7, 351501767, '16', 3, 'Large', 'pending');
 
 -- --------------------------------------------------------
 
@@ -340,9 +365,35 @@ CREATE TABLE `slider` (
 --
 
 INSERT INTO `slider` (`slide_id`, `slide_name`, `slide_image`) VALUES
-(8, 'Slide Number 6', 'slide-6.jpg'),
-(9, 'Slide Number 7', 'slide-7.jpg'),
-(10, 'Editing Slide Number 8', 'slide-5.jpg');
+(9, 'Slide Number 7', 'slide-7.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `time_slot`
+--
+
+CREATE TABLE `time_slot` (
+  `ts_id` int(11) NOT NULL,
+  `ts_name` varchar(200) NOT NULL,
+  `ts_durantion` tinyint(4) NOT NULL,
+  `ts_status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wallet`
+--
+
+CREATE TABLE `wallet` (
+  `w_id` int(11) NOT NULL,
+  `add_ip` varchar(255) NOT NULL,
+  `ser_package_id` int(11) NOT NULL,
+  `ser_package_name` varchar(200) NOT NULL,
+  `beautitian_price` int(11) NOT NULL,
+  `customer_price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -359,6 +410,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `beautitian`
   ADD PRIMARY KEY (`beautitian_id`);
+
+--
+-- Indexes for table `branch`
+--
+ALTER TABLE `branch`
+  ADD PRIMARY KEY (`branch_id`);
 
 --
 -- Indexes for table `cart`
@@ -433,6 +490,19 @@ ALTER TABLE `slider`
   ADD PRIMARY KEY (`slide_id`);
 
 --
+-- Indexes for table `time_slot`
+--
+ALTER TABLE `time_slot`
+  ADD PRIMARY KEY (`ts_id`);
+
+--
+-- Indexes for table `wallet`
+--
+ALTER TABLE `wallet`
+  ADD PRIMARY KEY (`w_id`),
+  ADD UNIQUE KEY `ip_add` (`w_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -447,6 +517,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `beautitian`
   MODIFY `beautitian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `branch`
+--
+ALTER TABLE `branch`
+  MODIFY `branch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -464,7 +540,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `customer_orders`
 --
 ALTER TABLE `customer_orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -482,13 +558,13 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `pending_orders`
 --
 ALTER TABLE `pending_orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
@@ -513,6 +589,18 @@ ALTER TABLE `service_categories`
 --
 ALTER TABLE `slider`
   MODIFY `slide_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `time_slot`
+--
+ALTER TABLE `time_slot`
+  MODIFY `ts_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `wallet`
+--
+ALTER TABLE `wallet`
+  MODIFY `w_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

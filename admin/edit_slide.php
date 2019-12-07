@@ -1,10 +1,41 @@
+<?php 
+    
+    //if(!isset($_SESSION['admin_email'])){
+        
+        ///echo "<script>window.open('login.php','_self')</script>";
+        
+    //}else{
+
+?>
+
+<?php 
+
+    if(isset($_GET['edit_slide'])){
+        
+        $edit_slide_id = $_GET['edit_slide'];
+        
+        $edit_slide = "select * from slider where slide_id='$edit_slide_id'";
+        
+        $run_edit_slide = mysqli_query($con,$edit_slide);
+        
+        $row_edit_slide = mysqli_fetch_array($run_edit_slide);
+        
+        $slide_id = $row_edit_slide['slide_id'];
+        
+        $slide_name = $row_edit_slide['slide_name'];
+        
+        $slide_image = $row_edit_slide['slide_image'];
+        
+    }
+
+?>
 
 <div class="row"><!-- row 1 begin -->
     <div class="col-lg-12"><!-- col-lg-12 begin -->
         <ol class="breadcrumb"><!-- breadcrumb begin -->
             <li>
                 
-                <i class="fa fa-dashboard"></i> Dashboard / Insert branch
+                <i class="fa fa-dashboard"></i> Dashboard / Edit Slide
                 
             </li>
         </ol><!-- breadcrumb finish -->
@@ -17,24 +48,24 @@
             <div class="panel-heading"><!-- panel-heading begin -->
                 <h3 class="panel-title"><!-- panel-title begin -->
                 
-                    <i class="fa fa-money fa-fw"></i> Insert branch
+                    <i class="fa fa-money fa-fw"></i> Edit Slide
                 
                 </h3><!-- panel-title finish -->
             </div><!-- panel-heading finish -->
             
             <div class="panel-body"><!-- panel-body begin -->
-                <form action="" class="form-horizontal" method="post"><!-- form-horizontal begin -->
+                <form action="" class="form-horizontal" method="post" enctype="multipart/form-data"><!-- form-horizontal begin -->
                     <div class="form-group"><!-- form-group begin -->
                     
                         <label for="" class="control-label col-md-3"><!-- control-label col-md-3 begin --> 
                         
-                            Branch Name 
+                            Slide Name 
                         
                         </label><!-- control-label col-md-3 finish --> 
                         
                         <div class="col-md-6"><!-- col-md-6 begin -->
                         
-                            <input name="branch_name" type="text" class="form-control">
+                            <input name="slide_name" type="text" class="form-control" value="<?php echo $slide_name; ?>">
                         
                         </div><!-- col-md-6 finish -->
                     
@@ -43,28 +74,28 @@
                     
                         <label for="" class="control-label col-md-3"><!-- control-label col-md-3 begin --> 
                         
-                            Branch Address 
+                            Slide Image
                         
                         </label><!-- control-label col-md-3 finish --> 
                         
                         <div class="col-md-6"><!-- col-md-6 begin -->
                         
-                            <textarea type='text' name="branch_address" id="" cols="31" rows="3" class="form-control"></textarea>
+                            <input type="file" name="slide_image" class="form-control">
+                            
+                            <br/>
+                            
+                            <img src="slides_images/<?php echo $slide_image; ?>" class="img-responsive">
                         
                         </div><!-- col-md-6 finish -->
                     
                     </div><!-- form-group finish -->
                     <div class="form-group"><!-- form-group begin -->
                     
-                        <label for="" class="control-label col-md-3"><!-- control-label col-md-3 begin --> 
-                        
-                             
-                        
-                        </label><!-- control-label col-md-3 finish --> 
+                        <label for="" class="control-label col-md-3"><!-- control-label col-md-3 begin --></label><!-- control-label col-md-3 finish --> 
                         
                         <div class="col-md-6"><!-- col-md-6 begin -->
                         
-                            <input value="Submit" name="submit" type="submit" class="form-control btn btn-primary">
+                            <input type="submit" name="update" value="Update Now" class="btn btn-primary form-control">
                         
                         </div><!-- col-md-6 finish -->
                     
@@ -78,25 +109,30 @@
 
 <?php  
 
-          if(isset($_POST['submit'])){
-              
-              $branch_name = $_POST['branch_name'];
-              
-              $branch_address = $_POST['branch_address'];
-              
-              $insert_branch = "insert into branch (branch_name,branch_address) values ('$branch_name','$branch_address')";
-              
-              $run_branch = mysqli_query($con,$insert_branch);
-              
-              if($run_branch){
-                  
-                  echo "<script>alert('Your New branch Has Been Inserted')</script>";
-                  
-                  echo "<script>window.open('index.php?view_branch','_self')</script>";
-                  
-              }
-              
-          }
+    if(isset($_POST['update'])){
+        
+        $slide_name = $_POST['slide_name'];
+        
+        $slide_image = $_FILES['slide_image']['name'];
+        
+        $temp_name = $_FILES['slide_image']['tmp_name'];
+        
+        move_uploaded_file($temp_name,"slides_images/$slide_image");
+        
+        $update_slide = "update slider set slide_name='$slide_name',slide_image='$slide_image' where slide_id='$slide_id'";
+        
+        $run_update_slide = mysqli_query($con,$update_slide);
+        
+        if($run_update_slide){
+            
+            echo "<script>alert('Your Slide has been updated Successfully')</script>"; 
+        
+            echo "<script>window.open('index.php?view_slide','_self')</script>";
+            
+        }
+        
+    }
 
 ?>
 
+<?php //} ?>

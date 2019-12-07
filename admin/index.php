@@ -98,7 +98,15 @@
                         
                         include("view_service_categories.php");
                         
-                }	if(isset($_GET['insert_services'])){
+                }	if(isset($_GET['edit_service_categories'])){
+                        
+                        include("edit_service_categories.php");
+
+				}	if(isset($_GET['delete_service_categories'])){
+                        
+                        include("delete_service_categories.php");
+
+				}	if(isset($_GET['insert_services'])){
                         
                         include("insert_services.php");
                         
@@ -121,6 +129,22 @@
                 }   if(isset($_GET['edit_branch'])){
                         
                         include("edit_branch.php");
+                        
+                }	if(isset($_GET['insert_slide'])){
+                        
+                        include("insert_slide.php");
+                        
+                }   if(isset($_GET['view_slide'])){
+                        
+                        include("view_slide.php");
+                        
+                }   if(isset($_GET['delete_slide'])){
+                        
+                        include("delete_slide.php");
+                        
+                }   if(isset($_GET['edit_slide'])){
+                        
+                        include("edit_slide.php");
                         
                 }
         

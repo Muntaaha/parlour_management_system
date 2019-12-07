@@ -209,7 +209,7 @@
                         <a href="index.php?insert_slide"> Insert Slide </a>
                     </li><!-- li finish -->
                     <li><!-- li begin -->
-                        <a href="index.php?view_slides"> View Slides </a>
+                        <a href="index.php?view_slide"> View Slides </a>
                     </li><!-- li finish -->
                 </ul><!-- collapse finish -->
                 

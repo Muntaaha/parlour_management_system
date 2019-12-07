@@ -104,24 +104,26 @@
                
             </div><!-- col-md-3 Finish -->
 			<div class="col-md-9"><!-- col-md-9 Begin -->
-				<?php
-					if(isset($_GET['service.php?service_cat=$service_cat_id'])){
+					<?php
+						$get_service ="select * from service ";
+        
+						$run_service = mysqli_query($db,$get_service);
 						
-						?>
-						<h5> <?php echo $service_cat_id; ?></h5>
-						<h5> <?php echo $service_cat_name; ?></h5>
-						<?php
-                        
-                    }
-					if(isset($_GET['service.php?packages=$packages_id'])){
+						$row_service = mysqli_fetch_array($run_service);
 						
-						?>
-						<h5> <?php echo  $packages_id; ?></h5>
-						<h5> <?php echo $packages_name; ?></h5>
-						<?php
-                        
-                    }
-				?>
+						$service_name = $row_service['service_name'];
+						
+						$service_id = $row_service['service_id'];
+						
+						add_wallet();
+					?>
+					<form action="service.php?add_wallet=<?php echo $service_id; ?>" class="form-horizontal" method="post">
+					<?php
+						getservice();
+						//getpackage();
+					?>
+					</form>
+				
 			</div><!-- col-md-9 Finish -->
 			
 		</div><!-- container Finish -->

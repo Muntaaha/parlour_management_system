@@ -60,12 +60,12 @@
                                 <td> <?php echo $i; ?> </td>
                                 <td> <?php echo $service_categories_name; ?> </td>
 								<td> 
-                                    <a href="index.php?activate_packages= <?php echo $packages_id; ?> ">
+                                    <a href="index.php?edit_service_category= <?php echo $service_categories_id; ?> ">
                                         <i class="fa fa-pencil"></i> Edit
                                     </a>
                                 </td>
                                 <td> 
-                                    <a href="index.php?delete_packages= <?php echo $packages_id; ?> ">
+                                    <a href="index.php?delete_service_category= <?php echo $service_categories_id; ?> ">
                                         <i class="fa fa-trash"></i> Delete
                                     </a>
                                 </td>

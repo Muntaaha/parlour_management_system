@@ -1,25 +1,21 @@
-/*
-Template Name     : M-Dev Store
-Author Name       : MrGhie
-Author Email      : mugianto1nd@gmail.com
-Theme URI         : www.m-dev-store.com | localhost/m-dev-store
-Theme Ver         : 1.1
-*/
-
-/* General Styles */
 
 body{
     font-size: 14px;
     line-height: 1.42857143;
     color: #333333;
-    background: #f0f0f0;
+    background: rgba(99,62,70,0.7);
     overflow-x: hidden;
+	font-family: cursive;
+}
+
+a{
+	color: #800000;
 }
 
 /* Top Styles */
 
 #top{
-    background: #555555;
+    
     padding: 10px 0;
 }
 #top .offer{
@@ -96,10 +92,18 @@ body{
 .padding-nav{
     padding-top: 10px;
 }
+.panel-default>.panel-heading {
+	color: #fff;
+    background-color: #800000;
+    border-color: #800000;
+}
+.btn{
+	font-size: 13px;
+}
 .btn-primary{
-    color: rgb(255, 255, 255);
-    background: rgb(79, 191, 168);
-    border-color: rgb(65, 179, 156);
+    color: #fff;
+    background: rgb(237,39,54);
+    border-color: rgb(237,39,54);
 }
 #search .navbar-form{
     float: right;
@@ -350,16 +354,21 @@ body{
 /*  Footer Styles  */
 
 #footer{
-    background: #e0e0e0;
+    background: #800000;
     padding: 20px 0;
 }
+
+#footer h4{
+	color: #fff;
+}
+
 #footer a{
-    color: #999999;
+    color: #fff;
     padding: 0;
     text-decoration: none;
 }
 #footer a:hover{
-    color: #666666;
+    color: #fff;
 }
 #footer ul{
     list-style: none;
